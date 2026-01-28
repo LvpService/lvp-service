@@ -8,8 +8,29 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+
+  /* Beige claire */
+  --color-primary: #ddccbc;
+  /* Beige foncé */
+  --color-second: #b09b8a;
+  /* Beige jaune */
+  --color-tiers: #ecd8bd;
+  /* Beige blanc */
+  --color-quater: #f7ede3;
+  /* Noir */
+  --color-noir: #1e1e1e;
+
+  /* Texte */
+  --font-one: var(--font-montserrat);
+  /*  Sous-titre */
+  --font-two: var(--font-tenor-sans);
+  /* Titre */
+  --font-three: "tan-pearl", sans-serif;
+}
+
+@font-face {
+  font-family: "tan-pearl";
+  src: url("/font/tan-pearl.otf") format("opentype");
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,8 +40,8 @@
   }
 }
 
-body {
+/* body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
+  font-family: var(--font-sans);
+} */
