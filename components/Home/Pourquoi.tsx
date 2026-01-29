@@ -35,7 +35,7 @@ export default function Pourquoi() {
   ];
 
   return (
-    <section className="relative bg-linear-to-br from-[#A39382] to-[#8B7E6E] wrapper py-16 md:py-20 lg:py-24 text-white overflow-hidden">
+    <section className="relative bg-linear-to-l from-second to-second-600 wrapper py-16 md:py-20 lg:py-24 text-white overflow-hidden">
       {/* Icône décorative en haut à droite */}
 
       <div className="relative z-10 mx-auto">

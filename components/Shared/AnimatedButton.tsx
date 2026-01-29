@@ -22,7 +22,7 @@ export default function AnimatedButton({
   const variantClasses =
     variant === "primary"
       ? "bg-second text-white hover:bg-second/80 shadow-md"
-      : "bg-tiers text-noir hover:bg-tiers/80 shadow-sm";
+      : "bg-second-600/90 text-white hover:bg-second-600/80 shadow-sm";
 
   return (
     <motion.div

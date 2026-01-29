@@ -31,7 +31,7 @@ export default function Hero() {
           </p>
 
           {/* Boutons CTA */}
-          <div className="flex flex-col sm:flex-row gap-2 md:gap-3 xl:gap-4 justify-center lg:justify-start">
+          <div className="flex flex-col sm:flex-row gap-6 md:gap-3 xl:gap-4 justify-center lg:justify-start">
             <AnimatedButton href="/prestations" variant="primary" delay={0.2}>
               Découvrir nos prestations
             </AnimatedButton>

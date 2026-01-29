@@ -198,7 +198,7 @@ export default function page() {
                         {prestation.benefits.map((benefit, i) => (
                           <span
                             key={i}
-                            className="inline-block px-3 py-1 bg-white rounded-full font-one text-xs text-second border border-second/20"
+                            className="inline-block px-3 py-1 bg-white rounded-full font-one text-xs text-second-600 border border-second/20"
                           >
                             {benefit}
                           </span>
@@ -334,7 +334,7 @@ export default function page() {
       {/* CTA Section */}
       <AnimatedSection>
         <section className="py-16 md:py-24 bg-second/50">
-          <div className="wrapper text-center max-w-2xl mx-auto">
+          <div className="wrapper text-center max-w-4xl mx-auto">
             <div className="flex justify-center mb-8">
               <Image
                 src="/logo/symb/logo_beige.png"
@@ -346,9 +346,9 @@ export default function page() {
               />
             </div>
             <h2 className="font-two text-3xl md:text-4xl text-noir mb-6">
-              Prêt à transformer vos espaces ?
+              Un besoin, une exigence, une question ?
             </h2>
-            <p className="font-one text-base text-noir/70 mb-8 leading-relaxed">
+            <p className="font-one text-base text-second-600 mb-8 leading-relaxed">
               Contactez-nous dès maintenant pour un devis gratuit et sans
               engagement. Nos experts vous conseilleront sur la meilleure
               solution pour vos besoins.

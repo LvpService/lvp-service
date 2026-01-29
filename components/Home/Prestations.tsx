@@ -110,8 +110,8 @@ export default function Prestations() {
             <div className="absolute inset-0 bg-linear-to-t from-noir/60 to-transparent" />
             <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 w-full flex justify-center px-6 sm:px-8">
               <Link
-                href="/nos-prestations"
-                className="w-full max-w-65 sm:w-fit xl:w-full lg:flex-1 px-5 sm:px-6 md:px-7 lg:px-8 py-2.5 sm:py-3 md:py-3 lg:py-3 bg-second text-white font-one text-xs sm:text-sm tracking-wide rounded-sm transition-all duration-300 hover:scale-105 shadow-md text-center"
+                href="/prestations"
+                className="inline-block px-8 py-3 bg-second text-white font-two text-sm tracking-wide rounded-sm hover:bg-second/90 transition-all duration-300 hover:scale-105 shadow-md"
               >
                 Découvrir nos prestations
               </Link>
