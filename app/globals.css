@@ -41,7 +41,40 @@
 }
 
 .wrapper {
-  @apply px-2 sm:px-8 xl:px-20;
+  @apply px-4 sm:px-8 xl:px-20;
+}
+
+/* Animations CSS pures pour Hero */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.animate-fade-in-right {
+  opacity: 0;
+  animation: fadeInRight 1s ease-out forwards;
 }
 
 /* body {

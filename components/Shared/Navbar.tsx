@@ -22,9 +22,9 @@ export default function Navbar({ links }: NavbarProps) {
     <nav className="wrapper py-2 flex justify-between items-center">
       <Link href={"/"} className="p-2 rounded-full">
         <Image
-          src="/logo/hori/logo_noir_hori.png"
+          src="/logo/symb/logo_noir.png"
           alt="Logo LVP Service"
-          width={120}
+          width={30}
           height={40}
           priority
           className="hover:scale-105 transition-all duration-300"

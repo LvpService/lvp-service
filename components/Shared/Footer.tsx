@@ -28,14 +28,14 @@ export default function Footer() {
               Île-de-France.
             </p>
             {/* Ligne décorative */}
-            <div className="h-1 w-16 sm:w-20 bg-linear-to-r from-primary via-second to-transparent rounded-xs mx-auto md:mx-0"></div>
+            <div className="hidden sm:bloc h-px w-16 sm:w-20 bg-linear-to-r from-primary via-second to-transparent rounded-xs mx-auto md:mx-0"></div>
           </div>
 
           {/* Colonne 2 - Navigation rapide */}
           <div className="text-center md:text-left">
             <h3 className="text-white font-two tracking-wider text-base sm:text-lg mb-3 sm:mb-4 relative inline-block">
               Navigation
-              <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-linear-to-r from-primary to-second rounded-xs"></span>
+              <span className="absolute -bottom-2 left-0 w-full h-px bg-linear-to-r from-primary to-second rounded-xs"></span>
             </h3>
             <ul className="space-y-2 sm:space-y-3">
               <li>
@@ -69,7 +69,7 @@ export default function Footer() {
           <div className="text-center md:text-left">
             <h3 className="text-white font-two tracking-wider text-base sm:text-lg mb-3 sm:mb-4 relative inline-block">
               Contact
-              <span className="absolute -bottom-2 left-0 w-full h-0.5 bg-linear-to-r from-primary to-second rounded-xs"></span>
+              <span className="absolute -bottom-2 left-0 w-full h-px bg-linear-to-r from-primary to-second rounded-xs"></span>
             </h3>
             <ul className="space-y-4 sm:space-y-3">
               <li className="text-gray-400 text-xs sm:text-sm font-one mt-1">
