@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 import { FaUser, FaEnvelope, FaPhone, FaMapMarkerAlt } from "react-icons/fa";
 
 export default function FormContact() {
@@ -15,6 +16,8 @@ export default function FormContact() {
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitSuccess, setSubmitSuccess] = useState<string | null>(null);
 
   const handleChange = (
     e: React.ChangeEvent<
@@ -28,24 +31,58 @@ export default function FormContact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitError(null);
+    setSubmitSuccess(null);
 
-    // Simuler l'envoi du formulaire
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
+    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
 
-    console.log("Form data:", formData);
-    alert("Votre message a été envoyé avec succès !");
+    if (!serviceId || !templateId || !publicKey) {
+      setSubmitError(
+        "Configuration EmailJS manquante. Vérifiez vos variables d'environnement.",
+      );
+      setIsSubmitting(false);
+      return;
+    }
 
-    // Réinitialiser le formulaire
-    setFormData({
-      nom: "",
-      prenom: "",
-      email: "",
-      telephone: "",
-      adresse: "",
-      typePrestation: "",
-      message: "",
-    });
-    setIsSubmitting(false);
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          nom: formData.nom,
+          prenom: formData.prenom,
+          email: formData.email,
+          telephone: formData.telephone,
+          adresse: formData.adresse,
+          typePrestation: formData.typePrestation,
+          message: formData.message,
+        },
+        {
+          publicKey,
+        },
+      );
+
+      setSubmitSuccess("Votre message a été envoyé avec succès !");
+
+      // Réinitialiser le formulaire
+      setFormData({
+        nom: "",
+        prenom: "",
+        email: "",
+        telephone: "",
+        adresse: "",
+        typePrestation: "",
+        message: "",
+      });
+    } catch (error) {
+      setSubmitError(
+        "Une erreur est survenue lors de l'envoi. Merci de réessayer.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -227,6 +264,13 @@ export default function FormContact() {
           {isSubmitting ? "Envoi en cours..." : "Envoyer votre demande"}
         </button>
       </div>
+
+      {submitSuccess ? (
+        <p className="text-sm text-green-600 font-one">{submitSuccess}</p>
+      ) : null}
+      {submitError ? (
+        <p className="text-sm text-red-600 font-one">{submitError}</p>
+      ) : null}
 
       {/* Mention légale */}
       <p className="text-xs text-gray-500 font-one">
