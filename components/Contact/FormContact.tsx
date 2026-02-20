@@ -299,7 +299,10 @@ export default function FormContact() {
       {/* Images */}
       <div>
         <label className="block text-sm font-two text-noir mb-2">
-          Photos (optionnel - max 4 images)
+          Photos <br />{" "}
+          <span className="text-xs text-gray-500 font-one">
+            Optionnelles, mais recommandées pour un devis précis — 4 images max
+          </span>
         </label>
         <div className="space-y-4">
           {/* Upload button */}
