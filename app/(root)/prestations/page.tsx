@@ -1,5 +1,6 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
+import type { Metadata } from "next";
 import AnimatedSection from "@/components/Shared/AnimatedSection";
 import AnimatedCard from "@/components/Shared/AnimatedCard";
 import {
@@ -11,6 +12,48 @@ import {
   FaHome,
 } from "react-icons/fa";
 import Image from "next/image";
+import Script from "next/script";
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.SITE_URL ??
+  "https://lvp-service.fr";
+const pageUrl = `${siteUrl}/prestations`;
+const pageDescription =
+  "Découvrez toutes les prestations LVP Service : nettoyage pour particuliers et professionnels, jardinage, entretien regulier ou ponctuel, et services sur mesure en Ile-de-France.";
+const ogImageUrl = `${siteUrl}/open_graph.png`;
+
+export const metadata: Metadata = {
+  title: "Nos prestations | LVP Service",
+  description: pageDescription,
+  alternates: {
+    canonical: pageUrl,
+  },
+  openGraph: {
+    title: "Nos prestations | LVP Service",
+    description: pageDescription,
+    url: pageUrl,
+    siteName: "LVP Service",
+    locale: "fr_FR",
+    type: "website",
+    images: [
+      {
+        url: ogImageUrl,
+        alt: "LVP Service",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Nos prestations | LVP Service",
+    description: pageDescription,
+    images: [ogImageUrl],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function page() {
   const prestations = [
@@ -112,8 +155,101 @@ export default function page() {
     },
   ];
 
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "LVP Service",
+      url: siteUrl,
+      logo: ogImageUrl,
+      description: pageDescription,
+      sameAs: [
+        "https://www.instagram.com/lvpservice",
+        "https://www.facebook.com/lvpservice",
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+33762648767",
+        contactType: "customer service",
+        areaServed: "FR",
+        availableLanguage: "French",
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "LVP Service",
+      url: siteUrl,
+      inLanguage: "fr-FR",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      name: "LVP Service",
+      image: ogImageUrl,
+      url: siteUrl,
+      telephone: "+33762648767",
+      priceRange: "€€",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "7 bis Avenue du petit Marly",
+        addressLocality: "Argenteuil",
+        postalCode: "95100",
+        addressRegion: "Ile-de-France",
+        addressCountry: "FR",
+      },
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 48.9472,
+        longitude: 2.2469,
+      },
+      openingHoursSpecification: [
+        {
+          "@type": "OpeningHoursSpecification",
+          dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          opens: "08:00",
+          closes: "18:00",
+        },
+      ],
+      areaServed: {
+        "@type": "AdministrativeArea",
+        name: "Ile-de-France",
+      },
+      makesOffer: {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "Nettoyage et jardinage",
+        },
+      },
+    },
+    ...prestations.map((prestation) => ({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: prestation.title,
+      description: prestation.description,
+      provider: {
+        "@type": "LocalBusiness",
+        name: "LVP Service",
+        url: siteUrl,
+      },
+      areaServed: {
+        "@type": "AdministrativeArea",
+        name: "Ile-de-France",
+      },
+      termsOfService: "Sur devis",
+      serviceType: "Nettoyage et jardinage",
+    })),
+  ];
+
   return (
     <main className="min-h-screen bg-white">
+      <Script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
+      />
       {/* Hero Section */}
       <section className="relative h-[40vh] md:h-[50vh] flex items-center justify-center bg-linear-to-br from-second/50 to-primary/10">
         <div className="wrapper text-center">

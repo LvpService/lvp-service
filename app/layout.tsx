@@ -15,7 +15,13 @@ const montserrat = Montserrat({
   subsets: ["latin"],
 });
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.SITE_URL ??
+  "https://lvp-service.fr";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: "LVP Service",
   description:
     "Prestations de nettoyage et jardinage professionnelles pour particuliers et entreprises en région parisienne et en Île-de-France.",

@@ -1,10 +1,93 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
+import type { Metadata } from "next";
 import AnimatedSection from "@/components/Shared/AnimatedSection";
+import Script from "next/script";
+
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  process.env.SITE_URL ??
+  "https://lvp-service.fr";
+const pageUrl = `${siteUrl}/mentions-legales`;
+const pageDescription =
+  "Mentions legales de LVP Service : informations juridiques, hebergement, responsabilite et proprietes intellectuelles.";
+const ogImageUrl = `${siteUrl}/open_graph.png`;
+
+export const metadata: Metadata = {
+  title: "Mentions legales | LVP Service",
+  description: pageDescription,
+  alternates: {
+    canonical: pageUrl,
+  },
+  openGraph: {
+    title: "Mentions legales | LVP Service",
+    description: pageDescription,
+    url: pageUrl,
+    siteName: "LVP Service",
+    locale: "fr_FR",
+    type: "website",
+    images: [
+      {
+        url: ogImageUrl,
+        alt: "LVP Service",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "Mentions legales | LVP Service",
+    description: pageDescription,
+    images: [ogImageUrl],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function page() {
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "LVP Service",
+      url: siteUrl,
+      logo: ogImageUrl,
+      description: pageDescription,
+      sameAs: [
+        "https://www.instagram.com/lvpservice",
+        "https://www.facebook.com/lvpservice",
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "LVP Service",
+      url: siteUrl,
+      inLanguage: "fr-FR",
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: "Mentions legales",
+      url: pageUrl,
+      description: pageDescription,
+      inLanguage: "fr-FR",
+      isPartOf: {
+        "@type": "WebSite",
+        url: siteUrl,
+      },
+    },
+  ];
+
   return (
     <main className="min-h-screen bg-white">
+      <Script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(structuredData),
+        }}
+      />
       {/* Hero Section */}
       <section className="relative h-[30vh] md:h-[40vh] flex items-center justify-center bg-linear-to-br from-second/10 to-primary/10">
         <div className="wrapper text-center">
