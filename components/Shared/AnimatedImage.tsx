@@ -19,7 +19,7 @@ export default function AnimatedImage({
       initial={{ opacity: 0, x: 30 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay, ease: [0.25, 0.4, 0.25, 1] }}
-      className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-lg 2xl:max-w-2xl aspect-video md:aspect-4/3 lg:aspect-3/4 rounded-xs overflow-hidden max-h-[50vh] sm:max-h-[60vh] md:max-h-[65vh] lg:max-h-[80vh]"
+      className="bg-blue-400 relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-lg 2xl:max-w-lg aspect-video md:aspect-4/3 lg:aspect-3/4 rounded-xs overflow-hidden max-h-[50vh] sm:max-h-[60vh] md:max-h-[65vh] lg:max-h-[80vh]"
     >
       <Image
         src={src}

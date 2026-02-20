@@ -16,7 +16,7 @@ export default function Hero() {
 
           {/* Titre principal */}
           {/* 2xl:text-6xl */}
-          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-4xl xl:text-5xl  font-three text-noir mb-4 sm:mb-6 md:mb-7 lg:mb-8 2xl:mb-10 leading-tight">
+          <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-4xl xl:text-5xl 2xl:text-6xl  font-three text-noir mb-4 sm:mb-6 md:mb-7 lg:mb-8 2xl:mb-10 leading-tight">
             Plus qu'un service,
             <br />
             un accompagnement
