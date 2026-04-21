@@ -7,6 +7,7 @@ import Quisommenous from "@/components/Home/Quisommenous";
 import Zone from "@/components/Home/Zone";
 import Cta from "@/components/Shared/Cta";
 import AnimatedSection from "@/components/Shared/AnimatedSection";
+import { toJsonLd } from "@/components/Shared/toJsonLd";
 import Script from "next/script";
 
 const siteUrl =
@@ -216,7 +217,7 @@ export default function Home() {
       <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData),
+          __html: toJsonLd(structuredData),
         }}
       />
       <section>

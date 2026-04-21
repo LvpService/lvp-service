@@ -1,6 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import type { Metadata } from "next";
 import AnimatedSection from "@/components/Shared/AnimatedSection";
+import { toJsonLd } from "@/components/Shared/toJsonLd";
 import Script from "next/script";
 
 const siteUrl =
@@ -84,7 +85,7 @@ export default function page() {
       <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData),
+          __html: toJsonLd(structuredData),
         }}
       />
       {/* Hero Section */}

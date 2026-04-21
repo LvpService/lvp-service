@@ -3,6 +3,7 @@ import React from "react";
 import type { Metadata } from "next";
 import AnimatedSection from "@/components/Shared/AnimatedSection";
 import AnimatedCard from "@/components/Shared/AnimatedCard";
+import { toJsonLd } from "@/components/Shared/toJsonLd";
 import {
   FaCheckCircle,
   FaClock,
@@ -155,6 +156,28 @@ export default function page() {
     },
   ];
 
+  const serviceStructuredData = [];
+
+  for (const prestation of prestations) {
+    serviceStructuredData.push({
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: prestation.title,
+      description: prestation.description,
+      provider: {
+        "@type": "LocalBusiness",
+        name: "LVP Service",
+        url: siteUrl,
+      },
+      areaServed: {
+        "@type": "AdministrativeArea",
+        name: "Ile-de-France",
+      },
+      termsOfService: "Sur devis",
+      serviceType: "Nettoyage et jardinage",
+    });
+  }
+
   const structuredData = [
     {
       "@context": "https://schema.org",
@@ -223,23 +246,7 @@ export default function page() {
         },
       },
     },
-    ...prestations.map((prestation) => ({
-      "@context": "https://schema.org",
-      "@type": "Service",
-      name: prestation.title,
-      description: prestation.description,
-      provider: {
-        "@type": "LocalBusiness",
-        name: "LVP Service",
-        url: siteUrl,
-      },
-      areaServed: {
-        "@type": "AdministrativeArea",
-        name: "Ile-de-France",
-      },
-      termsOfService: "Sur devis",
-      serviceType: "Nettoyage et jardinage",
-    })),
+    ...serviceStructuredData,
   ];
 
   return (
@@ -247,7 +254,7 @@ export default function page() {
       <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData),
+          __html: toJsonLd(structuredData),
         }}
       />
       {/* Hero Section */}

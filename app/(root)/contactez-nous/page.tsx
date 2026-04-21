@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import FormContact from "@/components/Contact/FormContact";
 import ContactInfo from "@/components/Contact/ContactInfo";
 import AnimatedSection from "@/components/Shared/AnimatedSection";
+import { toJsonLd } from "@/components/Shared/toJsonLd";
 import Image from "next/image";
 import Script from "next/script";
 
@@ -149,7 +150,7 @@ export default function page() {
       <Script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(structuredData),
+          __html: toJsonLd(structuredData),
         }}
       />
       {/* Hero Section */}
