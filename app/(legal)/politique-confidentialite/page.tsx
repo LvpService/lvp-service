@@ -521,7 +521,7 @@ export default function page() {
                   <strong className="text-noir">
                     Date de dernière mise à jour :
                   </strong>{" "}
-                  Janvier 2026
+                  Avril 2026
                 </p>
                 <p>
                   Votre utilisation continue du site après les modifications
